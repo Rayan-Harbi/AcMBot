@@ -30,6 +30,7 @@ client.on("message", msg=>{
        .addField("math!","لعبة الرياضيات")
        .addField("topinv!","توب انفايت")
        .addField("**اوامر ادارية**"," ‎ ")
+       .addField("warn!","تحذير")
        msg.member.send(emberhelp);
    } 
     
@@ -332,7 +333,7 @@ client.on('message', message => {
     if(message.content.startsWith(`warn${prefix}`)){
         if(!p) return message.reply(`**Mention the user!**`);
         if(!reason) return message.reply(`**Spofic a reason!**`);
-        if(!p.bannable) return message.reply(`**I can't warn a staff member!**`);
+     //   if(!p.bannable) return message.reply(`**I can't warn a staff member!**`);
         reason = reason.replace('0', "**نشر في الخاص**");
         reason = reason.replace('1', "**اسم غير لائق**");
         reason = reason.replace('2', "**صوره غير لائقه**");
@@ -351,7 +352,7 @@ client.on('message', message => {
         .setTimestamp()
         .setColor("WHITE")
         .setFooter(` `)
-        message.channel.send(`${p} ${reason}`)
+        message.channel.send({embed})
             message.delete();
         log.send({embed});
     }
