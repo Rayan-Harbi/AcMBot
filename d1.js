@@ -328,6 +328,7 @@ client.on('message',message =>{
 client.on("message", msg => { //Narox Dev
     if(msg.author.bot) return;
     if(msg.channel.type === 'dm') return;
+ if (!msg.member.hasPermission('MANAGE_MESSAGES')) return msg.reply('You need MANAGE_MESSAGES permission noob').then( msgs => msgs.delete(3000));
   let msgarray = msg.content.split(" ");
   let cmd = msgarray[0];
   let args = msgarray.slice(1);
@@ -350,13 +351,13 @@ client.on("message", msg => { //Narox Dev
       
       
       let reportchannel = msg.guild.channels.find(`name`,"server-log"); //حط هنا اسم الروم الي يوريك بعض المعلومات
-      if(!reportchannel) return msg.reply("Couldn't find `server-log` channel. ").then( msgs => msgs.delete(3000));; //ط هنا اسم الروم الي يوريك بعض المعلومات
+      if(!reportchannel) return msg.reply("Couldn't find `server-log` channel. ").then( msgs => msgs.delete(3000)); //ط هنا اسم الروم الي يوريك بعض المعلومات
       
      // msg.delete().catch(O_o=>{});
       reportchannel.send(reportembed);
       rUser.send(reportembed);
       let role = msg.guild.roles.find(`name`, 'Warn'); 
-      if(!role) return msg.reply("Could't find `Warn` role.").then( msgs => msgs.delete(3000));; 
+      if(!role) return msg.reply("Could't find `Warn` role.").then( msgs => msgs.delete(3000)); 
       rUser.addRole(role);
       
           return;
