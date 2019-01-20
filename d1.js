@@ -332,7 +332,7 @@ client.on('message', message => {
     var reason = message.content.split(" ").slice(2).join(' ');
     var log = message.guild.channels.find('name', 'server-log');
     if(message.content.startsWith(`warn${prefix}`)){
-         if (!message.member.hasPermission('SEND_TTS_MESSAGES')) return message.reply('You need SEND_TTS_MESSAGES permission noob');
+         //if (!message.member.hasPermission('SEND_TTS_MESSAGES')) return message.reply('You need SEND_TTS_MESSAGES permission noob');
         if(!p) return message.reply(`**Mention the user!**`);
         if(!reason) return message.reply(`**Spofic a reason!**`);
      //   if(!p.bannable) return message.reply(`**I can't warn a staff member!**`);
@@ -363,7 +363,7 @@ client.on('message', message => {
 
 client.on('message', msg => {
     if(msg.content.startsWith(`warns${prefix}`))
-       if (!msg.member.hasPermission('SEND_TTS_MESSAGES')) return message.reply('You need SEND_TTS_MESSAGES permission noob');
+      // if (!msg.member.hasPermission('SEND_TTS_MESSAGES')) return message.reply('You need SEND_TTS_MESSAGES permission noob');
         var emved = new Discord.RichEmbed()
           .setAuthor(`${botName}`,`${urlbot}`)
           .addField(`WarnsList`,`‎`)
