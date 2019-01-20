@@ -31,6 +31,7 @@ client.on("message", msg=>{
        .addField("topinv!","توب انفايت")
        .addField("**اوامر ادارية**"," ‎ ")
        .addField("warn!","تحذير")
+       .addField("warns!","قائمة اسباب التحذير")
        msg.member.send(emberhelp);
    } 
     
@@ -331,6 +332,7 @@ client.on('message', message => {
     var reason = message.content.split(" ").slice(2).join(' ');
     var log = message.guild.channels.find('name', 'server-log');
     if(message.content.startsWith(`warn${prefix}`)){
+         if (!message.member.hasPermission('SEND_TTS_MESSAGES')) return message.reply('You need SEND_TTS_MESSAGES permission noob');
         if(!p) return message.reply(`**Mention the user!**`);
         if(!reason) return message.reply(`**Spofic a reason!**`);
      //   if(!p.bannable) return message.reply(`**I can't warn a staff member!**`);
@@ -342,7 +344,7 @@ client.on('message', message => {
         reason = reason.replace('5', "**مخالفه القوانين مع اخذ اكثر من تحذير**");
         reason = reason.replace('6', "**سبام في الشات**");
         reason = reason.replace('7', "**استخدام بعض الاوامر بشكل مسبب للإضرار بالسيرفر**");
-        reason = reason.replace('8', "**جلب اعضاء مفبركين للسيرفر**");
+        reason = reason.replace('8', "**جلب اعضاء وهمين للسيرفر**");
         reason = reason.replace('9', "**عنصريه**");
         var embed = new Discord.RichEmbed()
         .setAuthor(`User Warned!`)
@@ -350,7 +352,7 @@ client.on('message', message => {
         .addField(`By ♣`, `<@${message.author.id}>`)
         .addField(`Reason ♣`, reason)
         .setTimestamp()
-        .setColor("WHITE")
+        .setColor("RED")
         .setFooter(` `)
         message.channel.send({embed})
         p.send({embed})
@@ -358,10 +360,34 @@ client.on('message', message => {
         log.send({embed});
     }
 });
-/**
+
 client.on('message', msg => {
     if(msg.content.startsWith(`warns${prefix}`))
+       if (!msg.member.hasPermission('SEND_TTS_MESSAGES')) return message.reply('You need SEND_TTS_MESSAGES permission noob');
         var emved = new Discord.RichEmbed()
-        **/
-///////////////////////////////////////////////////////////
+          .setAuthor(`${botName}`,`${urlbot}`)
+          .addField(`WarnsList`,`‎`)
+          .addField(`0`,`**نشر في الخاص**`)
+          .addField(`1`,`**اسم غير لائق**`)
+          .addField(`2`,`**صورة غير لائقه**`)
+          .addField(`3`,`**سب الاهل**`)
+          .addField(`4`,`**سب الذات الاهيه**`)
+          .addField(`5`,`**مخالفه القوانين مع اخذ اكثر من تحذير**`)
+          .addField(`6`,`**سبام في الشات**`)
+          .addField(`7`,`**استخدام بعض الاوامر بشكل مسبب لللإضرار بالسيرفر**`)
+          .addField(`8`,`**جلب اعضاء وهمين للسيرفر**`)
+          .addField(`9`,`**عنصريةة**`)
+          msg.reply({emved})
+});
+        ///////////////////////////////////////////////////////////
 client.login(process.env.BOT_TOKEN);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
