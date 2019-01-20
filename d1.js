@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const Discord = require("Discord.js");
 const client  = new Discord.Client();
 var prefix = "!"
 //client.login("NTM2MDA1OTkxODUxMDk4MTEy.DyQdOQ.UdCgJ-K6Mnp6KpSNtDvihu2nIs4");
@@ -85,22 +85,7 @@ ${message.author.tag}`,false)
 });
 ////////////////////////////////////]
 
-client.on('msg', function(msg) {
-    if (msg.content.startsWith(`clear${prefix}`)) {
-        if(!msg.channel.guild) return msg.reply('** This command only for servers **');
-        if (msg.member.hasPermission("MANAGE_MESSAGES")) {
-            msg.delete()
-            var limitDeletd = msg.content.split(" ").slice(1).join(" ");
-            if (!limitDeletd) {var limitDeletd = 100};
-            msg.channel.fetchMessages({limit : limitDeletd})
-               .then(function(list){
-                    msg.channel.bulkDelete(list);
-                    msg.channel.send(`عدد الرسائل التي تم مسحها : ${limitDeletd}`,{code: 'lua'}).then(msg => msg.delete(3000));
-                }, function(err){msg.channel.send("ERROR: ERROR CLEARING CHANNEL.")})
-        }
-    }
 
-});
 
 client.on('message', message => {
      if(message.content.startsWith("clear" + prefix  )) {
@@ -338,4 +323,37 @@ client.on('message',message =>{
     }
   });
 //////////////////////////////////////////
+
+client.on('message', message => {
+    var p = message.mentions.members.first();
+    var reason = message.content.split(" ").slice(2).join(' ');
+    var log = message.guild.channels.find('name', 'server-log');
+    if(message.content.startsWith(`warn${prefix}`)){
+        if(!p) return message.reply(`**Mention the user!**`);
+        if(!reason) return message.reply(`**Spofic a reason!**`);
+        if(!p.bannable) return message.reply(`**I can't warn a staff member!**`);
+        reason = reason.replace('0', "**نشر في الخاص**");
+        reason = reason.replace('1', "**اسم غير لائق**");
+        reason = reason.replace('2', "**صوره غير لائقه**");
+        reason = reason.replace('3', "**سب الاهل**");
+        reason = reason.replace('4', "**سب الذات الاهيه**");
+        reason = reason.replace('5', "**مخالفه القوانين مع اخذ اكثر من تحذير**");
+        reason = reason.replace('6', "**سبام في الشات**");
+        reason = reason.replace('7', "**استخدام بعض الاوامر بشكل مسبب للإضرار بالسيرفر**");
+        reason = reason.replace('8', "**جلب اعضاء مفبركين للسيرفر**");
+        reason = reason.replace('9', "**عنصريه**");
+        var embed = new Discord.RichEmbed()
+        .setAuthor(`User Warned!`)
+        .addField(`Name ♣`, `<@${p.id}>`)
+        .addField(`By ♣`, `<@${message.author.id}>`)
+        .addField(`Reason ♣`, reason)
+        .setTimestamp()
+        .setColor("WHITE")
+        .setFooter(` `)
+        message.channel.send(`${p} ${reason}`)
+            message.delete();
+        log.send({embed});
+    }
+});
+///////////////////////////////////////////////////////////
 client.login(process.env.BOT_TOKEN);
