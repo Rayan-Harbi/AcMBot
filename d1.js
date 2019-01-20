@@ -342,7 +342,7 @@ client.on('message', message => {
         reason = reason.replace('5', "**مخالفه القوانين مع اخذ اكثر من تحذير**");
         reason = reason.replace('6', "**سبام في الشات**");
         reason = reason.replace('7', "**استخدام بعض الاوامر بشكل مسبب للإضرار بالسيرفر**");
-        reason = reason.replace('8', "**جلب اعضاء مفبركين للسيرفر**");
+        reason = reason.replace('8', "**جلب اعضاء وهميين للسيرفر**");
         reason = reason.replace('9', "**عنصريه**");
         var embed = new Discord.RichEmbed()
         .setAuthor(`User Warned!`)
@@ -358,5 +358,28 @@ client.on('message', message => {
         log.send({embed});
     }
 });
+
+client.on("message", msg => {
+    if(msg.content.startsWith(`warns${prefix}`)){
+        if(!msg.channel.guild) return msg.reply('** This command only for servers **');
+       if(msg.channel.id !== '510780740636770325') { msg.reply(`${client.channels.get("510780740636770325")}`).then(msgs => msgs.delete(3000)); return}
+      let embed = new Discord.RichEmbed()
+      .setAuthor(userd.username, userd.displayAvatarURL)
+      .setThumbnail(userd.avatarURL)
+      .setColor("Red")
+      .addField(`Warnings List`," ‎ ",true)
+      .addField(`0`,"**نشر في الخاص**")
+      .addField(`1`,"**اسم غير لائق**")
+      .addField(`2`,"**صوره غير لائقه**")
+      .addField(`3`,"**سب الاهل**")
+      .addField(`4`,"**سب الذات الاهيه**")
+      .addField(`5`,"**مخالفه القوانين مع اخذ اكثر من تحذير**")
+      .addField(`6`,"*سبام في الشات**")
+      .addField(`7`,"**استخدام بعض الاوامر بشكل مسبب للإضرار بالسيرفر**")
+      .addField(`8`,"**جلب اعضاء وهميين للسيرفر**")
+      .addField(`9`,"**عنصريه**")
+      msg.reply(embed);
+    }
+  });
 ///////////////////////////////////////////////////////////
 client.login(process.env.BOT_TOKEN);
