@@ -31,7 +31,6 @@ client.on("message", msg=>{
        .addField("topinv!","توب انفايت")
        .addField("**اوامر ادارية**"," ‎ ")
        .addField("warn!","تحذير")
-       .addField("warns!","تحذير")
        msg.member.send(emberhelp);
    } 
     
@@ -333,7 +332,7 @@ client.on("message", msg => { //Narox Dev
   let cmd = msgarray[0];
   let args = msgarray.slice(1);
   let reason = args.join(" ").slice(22);
-  if(cmd === `${prefix}warn`){//الامر
+  if(cmd === `warn${prefix}`){//الامر
     
     
   
