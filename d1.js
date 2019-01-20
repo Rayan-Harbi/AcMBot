@@ -31,6 +31,7 @@ client.on("message", msg=>{
        .addField("topinv!","توب انفايت")
        .addField("**اوامر ادارية**"," ‎ ")
        .addField("warn!","تحذير")
+       .addField("warns!","تحذير")
        msg.member.send(emberhelp);
    } 
     
