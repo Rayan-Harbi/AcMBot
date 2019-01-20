@@ -329,6 +329,7 @@ client.on('message',message =>{
 
 client.on('message', message => {
     var p = message.mentions.members.first();
+    var s = message.mentions.users.first();
     var reason = message.content.split(" ").slice(2).join(' ');
     var log = message.guild.channels.find('name', 'server-log');
     if(message.content.startsWith(`warn${prefix}`)){
@@ -354,7 +355,7 @@ client.on('message', message => {
         .setColor("WHITE")
         .setFooter(` `)
         message.channel.send({embed})
-        p.send({embed})
+        s.send({embed})
             message.delete();
         log.send({embed});
     }
