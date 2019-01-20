@@ -332,6 +332,7 @@ client.on('message', message => {
     var reason = message.content.split(" ").slice(2).join(' ');
     var log = message.guild.channels.find('name', 'server-log');
     if(message.content.startsWith(`warn${prefix}`)){
+        if (message.author.id == client.user.id) return;
          //if (!message.member.hasPermission('SEND_TTS_MESSAGES')) return message.reply('You need SEND_TTS_MESSAGES permission noob');
         if(!p) return message.reply(`**Mention the user!**`);
         if(!reason) return message.reply(`**Spofic a reason!**`);
@@ -363,8 +364,9 @@ client.on('message', message => {
 
 client.on('message', msg => {
     if(msg.content.startsWith(`warns${prefix}`))
+        if (msg.author.id == client.user.id) return;
       // if (!msg.member.hasPermission('SEND_TTS_MESSAGES')) return message.reply('You need SEND_TTS_MESSAGES permission noob');
-        var emved = new Discord.RichEmbed()
+        var emved2 = new Discord.RichEmbed()
           .setAuthor(`${botName}`,`${urlbot}`)
           .addField(`WarnsList`,`‎`)
           .addField(`0`,`**نشر في الخاص**`)
@@ -377,7 +379,7 @@ client.on('message', msg => {
           .addField(`7`,`**استخدام بعض الاوامر بشكل مسبب لللإضرار بالسيرفر**`)
           .addField(`8`,`**جلب اعضاء وهمين للسيرفر**`)
           .addField(`9`,`**عنصريةة**`)
-          msg.reply({emved})
+          msg.reply({emved2})
 });
         ///////////////////////////////////////////////////////////
 client.login(process.env.BOT_TOKEN);
