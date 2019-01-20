@@ -1,7 +1,7 @@
 const Discord = require("Discord.js");
 const client  = new Discord.Client();
 var prefix = "!"
-client.login("NTM2MDA1OTkxODUxMDk4MTEy.DyQdOQ.UdCgJ-K6Mnp6KpSNtDvihu2nIs4");
+//client.login("NTM2MDA1OTkxODUxMDk4MTEy.DyQdOQ.UdCgJ-K6Mnp6KpSNtDvihu2nIs4");
 
 ////////////////////////[
 client.on("ready", ()=> {
@@ -338,3 +338,4 @@ client.on('message',message =>{
     }
   });
 //////////////////////////////////////////
+client.login(process.env.BOT_TOKEN);
