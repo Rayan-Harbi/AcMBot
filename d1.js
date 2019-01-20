@@ -1,4 +1,4 @@
-const Discord = require("Discord.js");
+const Discord = require("discord.js");
 const client  = new Discord.Client();
 var prefix = "!"
 //client.login("NTM2MDA1OTkxODUxMDk4MTEy.DyQdOQ.UdCgJ-K6Mnp6KpSNtDvihu2nIs4");
@@ -29,6 +29,7 @@ client.on("message", msg=>{
        .addField("bot!","معلومات البوت")
        .addField("math!","لعبة الرياضيات")
        .addField("topinv!","توب انفايت")
+       .addField("**اوامر ادارية**"," ‎ ")
        msg.member.send(emberhelp);
    } 
     
