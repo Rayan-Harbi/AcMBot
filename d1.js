@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client  = new Discord.Client();
-var prefix = "!"
+const prefix = "!"
 //client.login("NTM2MDA1OTkxODUxMDk4MTEy.DyQdOQ.UdCgJ-K6Mnp6KpSNtDvihu2nIs4");
 
 ////////////////////////[
@@ -325,62 +325,44 @@ client.on('message',message =>{
    
     }
   });
-//////////////////////////////////////////
+/////////////////////////////////////////
+client.on("message", msg => { //Narox Dev
+    if(msg.author.bot) return;
+    if(msg.channel.type === 'dm') return;
+  let msgarray = msg.content.split(" ");
+  let cmd = msgarray[0];
+  let args = msgarray.slice(1);
+  let reason = args.join(" ").slice(22);
+  if(cmd === `${prefix}warn`){//الامر
+    
+    
+  
+    let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+  if(!rUser) return msg.reply("Couldn't find users.");
+  if(!reason) return msg.reply("Enter reason")
+      let reportembed = new Discord.RichEmbed()
+      .setDescription("Warn")
+      .setColor("BLACK")
+      .addField("Warn User", `${rUser} with ID: ${rUser.id}`)
+      .addField("Warn By", `${msg.author} with ID: ${msg.author.id}`)
+      .addField("Channel", msg.channel)
+      .addField("Time", msg.createdAt)
+      .addField("Reason",`${reason}`)
+      
+      
+      let reportchannel = msg.guild.channels.find(`name`,"server-log"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+      if(!reportchannel) return msg.reply("Couldn't find `server-log` channel. ").then( msgs => msgs.delete(3000));; //ط هنا اسم الروم الي يوريك بعض المعلومات
+      
+     // msg.delete().catch(O_o=>{});
+      reportchannel.send(reportembed);
+      rUser.send(reportembed);
+      let role = msg.guild.roles.find(`name`, 'Warn'); 
+      if(!role) return msg.reply("Could't find `Warn` role.").then( msgs => msgs.delete(3000));; 
+      rUser.addRole(role);
+      
+          return;
+      }
+      });
 
-client.on('message', message => {
-    var p = message.mentions.members.first();
-    var reason = message.content.split(" ").slice(2).join(' ');
-    var log = message.guild.channels.find('name', 'server-log');
-    if(message.content.startsWith(`warn${prefix}`)){
-        if(!p) return message.reply(`**Mention the user!**`);
-        if(!reason) return message.reply(`**Spofic a reason!**`);
-     //   if(!p.bannable) return message.reply(`**I can't warn a staff member!**`);
-        reason = reason.replace('0', "**نشر في الخاص**");
-        reason = reason.replace('1', "**اسم غير لائق**");
-        reason = reason.replace('2', "**صوره غير لائقه**");
-        reason = reason.replace('3', "**سب الاهل**");
-        reason = reason.replace('4', "**سب الذات الاهيه**");
-        reason = reason.replace('5', "**مخالفه القوانين مع اخذ اكثر من تحذير**");
-        reason = reason.replace('6', "**سبام في الشات**");
-        reason = reason.replace('7', "**استخدام بعض الاوامر بشكل مسبب للإضرار بالسيرفر**");
-        reason = reason.replace('8', "**جلب اعضاء وهميين للسيرفر**");
-        reason = reason.replace('9', "**عنصريه**");
-        var embed = new Discord.RichEmbed()
-        .setAuthor(`User Warned!`)
-        .addField(`Name ♣`, `<@${p.id}>`)
-        .addField(`By ♣`, `<@${message.author.id}>`)
-        .addField(`Reason ♣`, reason)
-        .setTimestamp()
-        .setColor("WHITE")
-        .setFooter(` `)
-        message.channel.send({embed})
-        p.send(embed)
-            message.delete();
-        log.send({embed});
-    }
-});
-
-client.on("message", msg => {
-    if(msg.content.startsWith(`warns${prefix}`)){
-        if(!msg.channel.guild) return msg.reply('** This command only for servers **');
-       if(msg.channel.id !== '510780740636770325') { msg.reply(`${client.channels.get("510780740636770325")}`).then(msgs => msgs.delete(3000)); return}
-      let embed = new Discord.RichEmbed()
-      .setAuthor(userd.username, userd.displayAvatarURL)
-      .setThumbnail(userd.avatarURL)
-      .setColor("Red")
-      .addField(`Warnings List`," ‎ ",true)
-      .addField(`0`,"**نشر في الخاص**")
-      .addField(`1`,"**اسم غير لائق**")
-      .addField(`2`,"**صوره غير لائقه**")
-      .addField(`3`,"**سب الاهل**")
-      .addField(`4`,"**سب الذات الاهيه**")
-      .addField(`5`,"**مخالفه القوانين مع اخذ اكثر من تحذير**")
-      .addField(`6`,"*سبام في الشات**")
-      .addField(`7`,"**استخدام بعض الاوامر بشكل مسبب للإضرار بالسيرفر**")
-      .addField(`8`,"**جلب اعضاء وهميين للسيرفر**")
-      .addField(`9`,"**عنصريه**")
-      msg.reply(embed);
-    }
-  });
 ///////////////////////////////////////////////////////////
 client.login(process.env.BOT_TOKEN);
