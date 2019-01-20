@@ -354,7 +354,7 @@ client.on('message', message => {
         .setColor("WHITE")
         .setFooter(` `)
         message.channel.send({embed})
-        message.p.send({embed})
+        p.send(embed)
             message.delete();
         log.send({embed});
     }
