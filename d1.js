@@ -353,10 +353,15 @@ client.on('message', message => {
         .setColor("WHITE")
         .setFooter(` `)
         message.channel.send({embed})
-        message.member.send({embed})
+        p.send({embed})
             message.delete();
         log.send({embed});
     }
 });
+/**
+client.on('message', msg => {
+    if(msg.content.startsWith(`warns${prefix}`))
+        var emved = new Discord.RichEmbed()
+        **/
 ///////////////////////////////////////////////////////////
 client.login(process.env.BOT_TOKEN);
