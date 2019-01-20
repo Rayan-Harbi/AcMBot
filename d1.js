@@ -345,7 +345,7 @@ client.on("message", msg => { //Narox Dev
       .addField("Warn User", `${rUser} with ID: ${rUser.id}`)
       .addField("Warn By", `${msg.author} with ID: ${msg.author.id}`)
       .addField("Channel", msg.channel)
-      .addField("Time", msg.createdAt)
+      .addField("Time",moment(msg.createdAt).fromNow())
       .addField("Reason",`${reason}`)
       
       
