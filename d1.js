@@ -328,13 +328,13 @@ client.on('message',message =>{
 client.on("message", msg => { //Narox Dev
     if(msg.author.bot) return;
     if(msg.channel.type === 'dm') return;
- if (!msg.member.hasPermission('MANAGE_MESSAGES')) return msg.reply('You need MANAGE_MESSAGES permission noob').then( msgs => msgs.delete(3000));
   let msgarray = msg.content.split(" ");
   let cmd = msgarray[0];
   let args = msgarray.slice(1);
   let reason = args.join(" ").slice(22);
   if(cmd === `warn${prefix}`){//الامر
-    
+     if (!msg.member.hasPermission('MANAGE_MESSAGES')) return msg.reply('You need MANAGE_MESSAGES permission noob').then( msgs => msgs.delete(3000));
+
     
   
     let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
