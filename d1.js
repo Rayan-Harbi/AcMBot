@@ -364,4 +364,12 @@ client.on("message", msg => { //Narox Dev
       });
 
 ///////////////////////////////////////////////////////////
+
+client.on('message', msg => {
+     if(msg.content.includes("Reflecty")){
+         msg.delete()   
+    };
+});
+
+////////////////////////////////////////////////////////////
 client.login(process.env.BOT_TOKEN);
