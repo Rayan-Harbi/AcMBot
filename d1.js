@@ -290,7 +290,7 @@ function setnum(message){
 
 client.on('message', message => {
   if (lastmath && message.content ==     lastmatha) {
-        msg.channel.send(`${message.author} اجابة صحيحة : ${lastmatha}`,{code: 'lua'}).then( msgs => msgs.delete(3000));
+        message.channel.send(`${message.author} اجابة صحيحة : ${lastmatha}`,{code: 'lua'}).then( msgs => msgs.delete(3000));
         lastmath = false ;
         lastmatha = false ;
     };
