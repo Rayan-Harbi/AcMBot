@@ -476,6 +476,18 @@ msg.guild.member(bUser).ban();
 msg.reply(`Done:white_check_mark: `).then(z => z.delete(1600));
 banChannel.send(banembed)
 }});
-
+//////////////////////////////////////////
+    client.on('message', dark => {
+    
+    if (dark.content === "Check!") {
+        setInterval(function(){
+        dark.edit('**C**')    
+        dark.edit('**Co**')    
+        dark.edit('**Cod**')
+        dark.edit('**Code**')
+        }, 900)
+    }
+    
+})
 ////////////////////////////////////////////////////////////
 client.login(process.env.BOT_TOKEN);
