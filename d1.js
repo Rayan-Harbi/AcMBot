@@ -31,6 +31,7 @@ client.on("message", msg=>{
        .addField("topinv!","توب انفايت")
        .addField("**اوامر ادارية**"," ‎ ")
        .addField("warn!","تحذير")
+       .addField("ban!","حظر")
        msg.member.send(emberhelp);
    } 
     
@@ -324,7 +325,7 @@ client.on('message',message =>{
     }
   });
 /////////////////////////////////////////
-client.on("message", msg => { //Narox Dev
+client.on("message", msg => {
     if(msg.author.bot) return;
     if(msg.channel.type === 'dm') return;
   let msgarray = msg.content.split(" ");
@@ -349,8 +350,8 @@ client.on("message", msg => { //Narox Dev
       .addField("Reason",`${reason}`)
       
       
-      let reportchannel = msg.guild.channels.find(`name`,"server-log"); //حط هنا اسم الروم الي يوريك بعض المعلومات
-      if(!reportchannel) return msg.reply("Couldn't find `server-log` channel. ").then( msgs => msgs.delete(3000)); //ط هنا اسم الروم الي يوريك بعض المعلومات
+      let reportchannel = msg.guild.channels.find(`name`,"server-log"); 
+      if(!reportchannel) return msg.reply("Couldn't find `server-log` channel. ").then( msgs => msgs.delete(3000)); 
       
      // msg.delete().catch(O_o=>{});
       reportchannel.send(reportembed);
@@ -370,6 +371,40 @@ client.on('message', msg => {
          msg.delete()   
     };
 });
+////////////////////////////////////////////////////
+client.on("message", msg => {
+    if(msg.author.bot) return;
+if(msg.channel.type === 'dm') return;
+let msgarray = msg.content.split(" ");
+let cmd = msgarray[0];
+let args = msgarray.slice(1);
+
+if(cmd === `ban${prefix}`){
+    let bUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+if(!bUser) return msg.reply("ban! @user reason");
+let breason = args.join(" ").slice(22);
+if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.reply("you don't have permission").then(s => {
+s.delete(1600);
+})
+ if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.reply("i don't have permission").then(z => {
+z.delete(1600);
+})
+if(bUser.hasPermission("BAN_MEMBERS")) 
+let banembed = new Discord.RichEmbed()
+.setDescription("~ban~")
+.setColor("BLACK")
+.addField("banned User", `${bUser} with ID: ${bUser.id}`)
+.addField("banned By", `<@${msg.author.id}> with ID: ${msg.author.id}`)
+.addField("banned In", msg.channel)
+.addField("Time", msg.createdAt)
+.addField("Reason", breason)
+let banChannel = msg.guild.channels.find("name","server-log");
+if(!banChannel) return ;
+
+msg.guild.member(bUser).ban();
+banChannel.send(banembed)
+    return;
+}});
 
 ////////////////////////////////////////////////////////////
 client.login(process.env.BOT_TOKEN);
