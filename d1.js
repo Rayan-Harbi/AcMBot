@@ -389,7 +389,7 @@ s.delete(1600);
  if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.reply("i don't have permission").then(z => {
 z.delete(1600);
 })
-if(bUser.hasPermission("BAN_MEMBERS")) 
+if(bUser.hasPermission("BAN_MEMBERS")) {
 let banembed = new Discord.RichEmbed()
 .setDescription("~ban~")
 .setColor("BLACK")
@@ -404,7 +404,7 @@ if(!banChannel) return ;
 msg.guild.member(bUser).ban();
 banChannel.send(banembed)
     return;
-}});
+}}});
 
 ////////////////////////////////////////////////////////////
 client.login(process.env.BOT_TOKEN);
