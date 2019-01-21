@@ -6,13 +6,13 @@ const prefix = "!"
 client.on("ready", ()=> {
 console.log("I love Myself");
         setInterval(function(){
-        client.user.setGame('**AcMBot+**')    
-        client.user.setGame('**help!**')
-        client.user.setGame('**solts!**')
-        client.user.setGame('**math!**')
-        client.user.setGame('**id!**')
-        client.user.setGame('**bot!**')
-        client.user.setGame('**topinv!**')
+        client.user.setGame('AcMBot+')    
+        client.user.setGame('help!')
+        client.user.setGame('solts!')
+        client.user.setGame('math!')
+        client.user.setGame('id!')
+        client.user.setGame('bot!')
+        client.user.setGame('topinv!')
 
         }, 10000);
     
