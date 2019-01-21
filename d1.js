@@ -114,7 +114,6 @@ client.on('message', message => {
   });
 };
 
-});
 
 
 ////////////////////////////////////]
@@ -178,8 +177,8 @@ client.on('guildMemberAdd', member => {
     .setThumbnail(member.user.avatarURL)
     .addField(`Wealcom to ${channel.guild.name}`," ‎ ",true)
     .addField(`${member.user.tag}`," ‎ ",true)
-    .addField("تاريخ دخول الديسكورد",`${moment(member.user.createdAt).fromNow()}`, true)
-    .addField("تتاريخ دخول السيرفر",`${moment(member.joinedAt).fromNow()}`, true)
+    .addField("تاريخ دخول الديسكورد",`${member.user.createdAt.toLocaleDateString()}`, true)
+    .addField("تتاريخ دخول السيرفر",`${member.joinedAt.toLocaleDateString()}`, true)
       channel.send(embed);
 });
 
@@ -222,7 +221,7 @@ client.on("message", msg => {
       .addField(`Id`, `${client.user.id}`,true)
       .addField(`RamUsage`, `${(process.memoryUsage().rss / 1048576).toFixed()}MB`,true)
       .addField(`Node.js Version`, `${process.version}`,true)
-      .addField(`CreatedAt`, `${moment(client.user.createdAt).fromNow()}`,true)
+      .addField(`CreatedAt`, `${client.user.createdAt.toLocaleDateString()}`,true)
       .addField(`Uptime`, `${days}:${hours}:${minutes}:${seconds}`,true)
       
       msg.reply(embedbot);
@@ -345,7 +344,7 @@ client.on("message", msg => {
       .addField("Warn User", `${rUser} with ID: ${rUser.id}`)
       .addField("Warn By", `${msg.author} with ID: ${msg.author.id}`)
       .addField("Channel", msg.channel)
-      .addField("Time",moment(msg.createdAt).fromNow())
+      .addField("Time",msg.createdAt.toLocaleDateString())
       .addField("Reason",`${reason}`)
       
       
@@ -475,7 +474,7 @@ let banChannel = msg.guild.channels.find("name","server-log");
 if(!banChannel) return ;
 msg.guild.member(bUser).ban();
 msg.reply(`Done:white_check_mark: `).then(z => z.delete(1600));
-banChannel.send(banembed)
+banChannel.send(banembed);
 }});
 
 ////////////////////////////////////////////////////////////
