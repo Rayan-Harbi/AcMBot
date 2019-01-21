@@ -377,8 +377,8 @@ client.on('message', msg => {
         if(!args[0]) return msg.reply(`unban! <id>`).then( msgs => msgs.delete(3000));
          if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.reply("you don't have permission").then(s => {s.delete(1600);})
             if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.reply("i don't have permission").then(z => {z.delete(1600);})    
-            let unban = msg.guild.unban(args[0]);
-            if(!unban) return msg.reply("i can't find player id").then( z => z.delete(1600));
+        
+            if(!msg.guild.unban(args[0])) return msg.reply("i can't find player id").then( z => z.delete(1600));
             let banembed = new Discord.RichEmbed()
             .setDescription("~unban~")
             .setColor("BLACK")
@@ -388,7 +388,7 @@ client.on('message', msg => {
             .addField("Time", msg.createdAt)
             let banChannel = msg.guild.channels.find("name","server-log");
             if(!banChannel) return ;
-            msg.reply(`Done`).then(z => z.delete(1600));
+            msg.reply(`Done:white_check_mark:  `).then(z => z.delete(1600));
             banChannel.send(banembed)
 }});
 ////////////////////////////////////
@@ -474,7 +474,7 @@ let banembed = new Discord.RichEmbed()
 let banChannel = msg.guild.channels.find("name","server-log");
 if(!banChannel) return ;
 msg.guild.member(bUser).ban();
-msg.reply(`Done`).then(z => z.delete(1600));
+msg.reply(`Done:white_check_mark: `).then(z => z.delete(1600));
 banChannel.send(banembed)
 }});
 
