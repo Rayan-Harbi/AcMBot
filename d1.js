@@ -1,7 +1,9 @@
 const Discord = require("discord.js");
 const client  = new Discord.Client();
 const prefix = "!"
-
+const moment = require("moment");// moment Package //
+const pretty = require('pretty-ms'); // pretty-ms Package //
+moment.locale('ar-TN');
 ////////////////////////[
 client.on("ready", ()=> {
 console.log("I love Myself");
@@ -168,8 +170,8 @@ client.on("message", msg => {
       .setColor("RANDOM")
       .addField(`Wealcom to ${msg.guild.name}`," ‎ ",true)
       .addField(`${userd.tag}`," ‎ ",true)
-      .addField("تاريخ دخول الديسكورد",userd.createdAt.toLocaleString().split(" ")[0], true)
-      .addField("تاريخ دخول السيرفر",memberd.joinedAt.toLocaleString().split(" ")[0], true)
+    .addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
+    .addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)               
       msg.reply(embed);
     }
   });
@@ -189,14 +191,13 @@ client.on('guildMemberAdd', member => {
     .setThumbnail(member.user.avatarURL)
     .addField(`Wealcom to ${channel.guild.name}`," ‎ ",true)
     .addField(`${member.user.tag}`," ‎ ",true)
-    .addField("تاريخ دخول الديسكورد",`${moment(member.user.createdAt).fromNow()}`, true)
-    .addField("تتاريخ دخول السيرفر",`${moment(member.joinedAt).fromNow()}`, true)
+    .addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
+    .addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)          
       channel.send(embed);
 });
 
 ////////////////////////[
-const moment = require("moment");// moment Package //
-const pretty = require('pretty-ms'); // pretty-ms Package //
+
 client.on("message", msg => {
     if(msg.content.startsWith(`bot${prefix}`)){
         if(!msg.channel.guild) return msg.reply('** This command only for servers **');
