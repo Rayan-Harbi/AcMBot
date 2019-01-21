@@ -389,7 +389,7 @@ client.on('message', msg => {
             msg.guild.member(bUser).ban();
             msg.reply(`Done`).then(z => z.delete(1600));
             banChannel.send(banembed)
-});
+}});
 ////////////////////////////////////
 client.on('message', async msg => {
   let message = msg;
