@@ -373,7 +373,7 @@ client.on('message', msg => {
 
 client.on('message', msg => {
      if(msg.content.startsWith("bans"+prefix)){
-         msg.guild.fetchBans()(g => {
+         msg.guild.fetchBans().then(g => {
              msg.reply(`This guild has ${bans.size} bans`).then( mss => mss.delete(3000));
      });
 }});
