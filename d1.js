@@ -5,7 +5,16 @@ const prefix = "!"
 ////////////////////////[
 client.on("ready", ()=> {
 console.log("I love Myself");
-client.user.setGame("Help!");
+        setInterval(function(){
+        client.user.setGame('**AcMBot+**')    
+        client.user.setGame('**help!**')
+        client.user.setGame('**solts!**')
+        client.user.setGame('**math!**')
+        client.user.setGame('**id!**')
+        client.user.setGame('**bot!**')
+        client.user.setGame('**topinv!**')
+
+        }, 10000);
     
 
 });
@@ -478,17 +487,5 @@ msg.reply(`Done:white_check_mark: `).then(z => z.delete(1600));
 banChannel.send(banembed)
 }});
 //////////////////////////////////////////////////
-client.on('message', dark => {
-    
-    if (dark.content === "check!") {
-        setInterval(function(){
-        dark.edit('**C**')    
-        dark.edit('**Co**')    
-        dark.edit('**Cod**')
-        dark.edit('**Code**')
-        }, 900)
-    }
-    
-})
 ////////////////////////////////////////////////////////////
 client.login(process.env.BOT_TOKEN);
