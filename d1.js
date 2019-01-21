@@ -104,11 +104,11 @@ client.on('message', message => {
 
     if (!actionlog) return message.channel.send("Can't find action-log channel. Are you sure that this channel exists and I have permission to view it? CANNOT POST LOG.");
     const embedlog = new Discord.RichEmbed()
-      .setDescription('~Purge~')
+      .setDescription('~Clear~')
       .setColor(0xF16104)
-      .addField('Purged By', `<@${message.author.id}> with ID ${message.author.id}`)
-      .addField('Purged in', message.channel)
-      .addField('Time', message.createdAt);
+      .addField('Clear By', `<@${message.author.id}> with ID ${message.author.id}`)
+      .addField('Clear in', message.channel)
+      .addField('Time', message.createdAt.toLocaleDateString());
     actionlog.send(embedlog);
    
   });
