@@ -380,7 +380,7 @@ let cmd = msgarray[0];
 let args = msgarray.slice(1);
 
 if(cmd === `ban${prefix}`){
-    let bUser = msg.mentions.users.first();
+    let bUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
 if(!bUser) return msg.reply("ban! @user reason");
 let breason = args.join(" ").slice(22);
 if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.reply("you don't have permission").then(s => {
@@ -389,7 +389,7 @@ s.delete(1600);
  if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.reply("i don't have permission").then(z => {
 z.delete(1600);
 })
-if(bUser.hasPermission("BAN_MEMBERS")) return msg.reply("S");
+if(bUser.hasPermission("BAN_MEMBERS")) return msg.reply("You Can't").then(z => {z.delete(1600);});
 let banembed = new Discord.RichEmbed()
 .setDescription("~ban~")
 .setColor("BLACK")
@@ -400,8 +400,8 @@ let banembed = new Discord.RichEmbed()
 .addField("Reason", breason)
 let banChannel = msg.guild.channels.find("name","server-log");
 if(!banChannel) return ;
-
 msg.guild.member(bUser).ban();
+msg.channel.send(`Done`).then(z => z.delte(1600));
 banChannel.send(banembed)
     return;
 }});
