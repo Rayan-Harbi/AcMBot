@@ -401,9 +401,8 @@ let banembed = new Discord.RichEmbed()
 let banChannel = msg.guild.channels.find("name","server-log");
 if(!banChannel) return ;
 msg.guild.member(bUser).ban();
-msg.channel.send(`Done`).then(z => z.delte(1600));
+msg.channel.send(`Done`).then(z => z.delete(1600));
 banChannel.send(banembed)
-    return;
 }});
 
 ////////////////////////////////////////////////////////////
