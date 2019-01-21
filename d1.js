@@ -476,7 +476,6 @@ msg.guild.member(bUser).ban();
 msg.reply(`Done:white_check_mark: `).then(z => z.delete(1600));
 banChannel.send(banembed)
 }});
-//////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////
 client.login(process.env.BOT_TOKEN);
