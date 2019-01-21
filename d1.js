@@ -8,15 +8,14 @@ moment.locale('ar-TN');
 client.on("ready", ()=> {
 console.log("I love Myself");
         setInterval(function(){
-        client.user.setGame('AcMBot+')    
-        client.user.setGame('help!')
-        client.user.setGame('solts!')
-        client.user.setGame('math!')
-        client.user.setGame('id!')
-        client.user.setGame('bot!')
-        client.user.setGame('topinv!')
+        client.user.setGame('AcMBot+','help!')   
+        client.user.setGame('AcMBot+','solts!')
+        client.user.setGame('AcMBot+','math!')
+        client.user.setGame('AcMBot+','id!')
+        client.user.setGame('AcMBot+','bot!')
+        client.user.setGame('AcMBot+','topinv!')
 
-        }, 10000);
+        }, 1600);
     
 
 });
