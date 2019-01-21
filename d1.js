@@ -374,7 +374,22 @@ client.on('message', msg => {
 client.on('message', msg => {
      if(msg.content.startsWith(`unban${prefix}`)){
          var args = msg.content.split(" ").slice(1);
-        msg.reply(args[0])
+        if(!args[0]) return msg.reply(`unban! <id>`).then( msgs => msgs.delete(3000));
+         if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.reply("you don't have permission").then(s => {s.delete(1600);})
+            if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.reply("i don't have permission").then(z => {z.delete(1600);})    
+            let unban = msg.guild.unban(args[0]);
+            if(!unban) return msg.reply("i can't find player id").then( z => z.delete(1600));
+            let banembed = new Discord.RichEmbed()
+            .setDescription("~unban~")
+            .setColor("BLACK")
+            .addField("unban User", ` ID: ${args[0]}`)
+            .addField("unban By", `<@${msg.author.id}> with ID: ${msg.author.id}`)
+            .addField("unban In", msg.channel)
+            .addField("Time", msg.createdAt)
+            let banChannel = msg.guild.channels.find("name","server-log");
+            if(!banChannel) return ;
+            msg.reply(`Done`).then(z => z.delete(1600));
+            banChannel.send(banembed)
 }});
 ////////////////////////////////////
 client.on('message', async msg => {
