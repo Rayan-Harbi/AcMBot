@@ -170,7 +170,7 @@ client.on("message", msg => {
       .addField(`Wealcom to ${msg.guild.name}`," ‎ ",true)
       .addField(`${userd.tag}`," ‎ ",true)
     .addField(': دخولك لديسكورد قبل', `${moment(userd.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
-    .addField(': انضمامك لسيرفر قبل', `${moment(memberd.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)      
+    .addField(': انضمامك لسيرفر قبل', `${moment(memberd.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(memberd.joinedAt).fromNow()}\``, true)      
       msg.reply(embed);
     }
   });
