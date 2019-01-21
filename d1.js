@@ -371,12 +371,58 @@ client.on('message', msg => {
     };
 });
 
-client.on('message', msg => {
-     if(msg.content.startsWith("bans"+prefix)){
-         msg.guild.fetchBans().then(g => {
-             msg.reply(`This guild has ${g.first().username} bans`).then( mss => mss.delete(3000));
-     });
-}});
+client.on('message', async msg => {
+  let message = msg;
+  if(msg.content.startsWith("bans"+prefix)){
+    let bans = await msg.guild.fetchBans();
+    let array = [];
+    await bans.forEach(async user=>{
+      array.push(user.id);
+    });
+    let page = 0;
+    let pages = parseInt(`${array.length}`.slice(0,-1),10);
+    const topembed = new Discord.RichEmbed()
+      .setAuthor(`Banned Users`)
+      .addField(`الشخص`, `<@!${array[0]}>\n<@!${array[1]}>\n<@!${array[2]}>\n<@!${array[3]}>\n<@!${array[4]}>\n<@!${array[5]}>\n<@!${array[6]}>\n<@!${array[7]}>\n<@!${array[8]}>\n<@!${array[9]}>\n<@!${array[10]}>`, true)
+      .setColor('RANDOM')
+      .setFooter(`Page ${page+1} of ${pages}`)
+      .setTimestamp();
+    message.channel.send(topembed).then(async topmessage=>{
+      topmessage.react(`◀`).then(()=>{
+        topmessage.react(`▶`).then(()=>{
+          const backwardsFilter = (reaction, user) => reaction.emoji.name === '◀' && user.id === message.author.id;
+          const forwardsFilter = (reaction, user) => reaction.emoji.name === '▶' && user.id === message.author.id;
+          const backwards = topmessage.createReactionCollector(backwardsFilter, {time: 120000});
+          const forwards = topmessage.createReactionCollector(forwardsFilter, {time: 120000});
+          backwards.on("collect", r=>{
+            r.remove(message.author);
+            if(page <= 0) return;
+            page--;
+            let newembed = new Discord.RichEmbed()
+              .setAuthor(`Banned Users`)
+              .addField(`الشخص`, `<@!${array[0]}>\n<@!${array[1]}>\n<@!${array[2]}>\n<@!${array[3]}>\n<@!${array[4]}>\n<@!${array[5]}>\n<@!${array[6]}>\n<@!${array[7]}>\n<@!${array[8]}>\n<@!${array[9]}>\n<@!${array[10]}>`, true)
+              .setColor("RANDOM")
+              .setFooter(`Page ${page+1} of ${pages}`)
+              .setTimestamp()
+            topmessage.edit(newembed);
+          })
+          forwards.on("collect", r=>{
+            r.remove(message.author);
+            if(page === pages) return;
+            page++;
+            let newembed = new Discord.RichEmbed()
+              .setAuthor(`Banned Users`)
+              .addField(`الشخص`, `<@!${array[0]}>\n<@!${array[1]}>\n<@!${array[2]}>\n<@!${array[3]}>\n<@!${array[4]}>\n<@!${array[5]}>\n<@!${array[6]}>\n<@!${array[7]}>\n<@!${array[8]}>\n<@!${array[9]}>\n<@!${array[10]}>`, true)
+              .setColor("RANDOM")
+              .setFooter(`Page ${page+1} of ${pages}`)
+              .setTimestamp()
+            topmessage.edit(newembed);
+          });
+        });
+      });
+    });
+  };
+});
 ////////////////////////////////////////////////////
 client.on("message", msg => {
     if(msg.author.bot) return;
