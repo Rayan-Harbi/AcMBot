@@ -374,7 +374,7 @@ client.on('message', msg => {
 client.on('message', msg => {
      if(msg.content.startsWith(`unban${prefix}`)){
         let bUser = msg.mentions.users.first()
-        if(!bUser) return msg.replay(`unban! <mention>`).then( msgs => msgs.delete(3000));
+        if(!bUser) return msg.reply(`unban! <mention>`).then( msgs => msgs.delete(3000));
          if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.reply("you don't have permission").then(s => {s.delete(1600);})
             if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.reply("i don't have permission").then(z => {z.delete(1600);})      
             let banembed = new Discord.RichEmbed()
