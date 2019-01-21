@@ -40,6 +40,8 @@ client.on("message", msg=>{
        .addField("**اوامر ادارية**"," ‎ ")
        .addField("warn!","تحذير")
        .addField("ban!","حظر")
+       .addField("bans!","قائمة المحظورين")
+       .addField("unban!","فك الحظر")
        msg.member.send(emberhelp);
    } 
     
