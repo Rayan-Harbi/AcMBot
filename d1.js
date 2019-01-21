@@ -177,8 +177,8 @@ client.on('guildMemberAdd', member => {
     .setThumbnail(member.user.avatarURL)
     .addField(`Wealcom to ${channel.guild.name}`," ‎ ",true)
     .addField(`${member.user.tag}`," ‎ ",true)
-    .addField("تاريخ دخول الديسكورد",`${member.user.createdAt.toLocaleDateString()}`, true)
-    .addField("تتاريخ دخول السيرفر",`${member.joinedAt.toLocaleDateString()}`, true)
+    .addField("تاريخ دخول الديسكورد",`${moment(member.user.createdAt).fromNow()}`, true)
+    .addField("تتاريخ دخول السيرفر",`${moment(member.joinedAt).fromNow()}`, true)
       channel.send(embed);
 });
 
@@ -221,7 +221,7 @@ client.on("message", msg => {
       .addField(`Id`, `${client.user.id}`,true)
       .addField(`RamUsage`, `${(process.memoryUsage().rss / 1048576).toFixed()}MB`,true)
       .addField(`Node.js Version`, `${process.version}`,true)
-      .addField(`CreatedAt`, `${(client.user.createdAt).fromNow()}`,true)
+      .addField(`CreatedAt`, `${moment(client.user.createdAt).fromNow()}`,true)
       .addField(`Uptime`, `${days}:${hours}:${minutes}:${seconds}`,true)
       
       msg.reply(embedbot);
