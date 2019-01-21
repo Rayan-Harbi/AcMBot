@@ -114,6 +114,7 @@ client.on('message', message => {
   });
 };
 
+});
 
 
 ////////////////////////////////////]
@@ -156,8 +157,8 @@ client.on("message", msg => {
       .setColor("RANDOM")
       .addField(`Wealcom to ${msg.guild.name}`," ‎ ",true)
       .addField(`${userd.tag}`," ‎ ",true)
-      .addField("تاريخ دخول الديسكورد",userd.createdAt.toLocaleDateString(), true)
-      .addField("تاريخ دخول السيرفر",memberd.joinedAt.toLocaleDateString(), true)
+      .addField("تاريخ دخول الديسكورد",userd.createdAt.toLocaleString().split(" ")[0], true)
+      .addField("تاريخ دخول السيرفر",memberd.joinedAt.toLocaleString().split(" ")[0], true)
       msg.reply(embed);
     }
   });
