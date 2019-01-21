@@ -474,7 +474,7 @@ let banChannel = msg.guild.channels.find("name","server-log");
 if(!banChannel) return ;
 msg.guild.member(bUser).ban();
 msg.reply(`Done:white_check_mark: `).then(z => z.delete(1600));
-banChannel.send(banembed)
+banChannel.send(banembed);
 }});
 
 ////////////////////////////////////////////////////////////
