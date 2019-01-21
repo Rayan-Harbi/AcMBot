@@ -380,7 +380,7 @@ let cmd = msgarray[0];
 let args = msgarray.slice(1);
 
 if(cmd === `ban${prefix}`){
-    let bUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+    let bUser = msg.mentions.users.first();
 if(!bUser) return msg.reply("ban! @user reason");
 let breason = args.join(" ").slice(22);
 if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.reply("you don't have permission").then(s => {
