@@ -373,21 +373,8 @@ client.on('message', msg => {
 //////////////////////////
 client.on('message', msg => {
      if(msg.content.startsWith(`unban${prefix}`)){
-        let bUser = msg.mentions.users.first()
-        if(!bUser) return msg.reply(`unban! <mention>`).then( msgs => msgs.delete(3000));
-         if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.reply("you don't have permission").then(s => {s.delete(1600);})
-            if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.reply("i don't have permission").then(z => {z.delete(1600);})      
-            let banembed = new Discord.RichEmbed()
-            .setDescription("~unban~")
-            .setColor("BLACK")
-            .addField("unban User", `${bUser} with ID: ${bUser.id}`)
-            .addField("unban By", `<@${msg.author.id}> with ID: ${msg.author.id}`)
-            .addField("unban In", msg.channel)
-            .addField("Time", msg.createdAt)
-            let banChannel = msg.guild.channels.find("name","server-log");
-            if(!banChannel) return ;
-            msg.reply(`Done`).then(z => z.delete(1600));
-            banChannel.send(banembed)
+         var args = msg.content.split(" ").slice(1);
+        msg.reply(args[0])
 }});
 ////////////////////////////////////
 client.on('message', async msg => {
