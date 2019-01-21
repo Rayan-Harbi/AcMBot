@@ -169,7 +169,7 @@ client.on("message", msg => {
       .setColor("RANDOM")
       .addField(`Wealcom to ${msg.guild.name}`," ‎ ",true)
       .addField(`${userd.tag}`," ‎ ",true)
-    .addField(': دخولك لديسكورد قبل', `${moment(userd.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
+    .addField(': دخولك لديسكورد قبل', `${moment(userd.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(userd.createdTimestamp).fromNow()}\`` ,true) 
     .addField(': انضمامك لسيرفر قبل', `${moment(memberd.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(memberd.joinedAt).fromNow()}\``, true)      
       msg.reply(embed);
     }
@@ -190,8 +190,8 @@ client.on('guildMemberAdd', member => {
     .setThumbnail(member.user.avatarURL)
     .addField(`Wealcom to ${channel.guild.name}`," ‎ ",true)
     .addField(`${member.user.tag}`," ‎ ",true)
-    .addField(': دخولك لديسكورد قبل', `${moment(userd.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
-    .addField(': انضمامك لسيرفر قبل', `${moment(memberd.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)        
+    .addField(': دخولك لديسكورد قبل', `${moment(userd.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(userd.createdTimestamp).fromNow()}\`` ,true) 
+    .addField(': انضمامك لسيرفر قبل', `${moment(memberd.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(memberd.joinedAt).fromNow()}\``, true)      
       channel.send(embed);
 });
 
