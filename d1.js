@@ -38,12 +38,6 @@ client.on("message", msg=>{
     
 });
 ////////////////////////[
-client.on("message", msg=>{
-   if(msg.content.find(`بوتتتتتتتتتتتتتتتتتتتت`)){
-       msg.delete()
-   } 
-    
-});
 
 ////////////////////////[
 client.on('message',async message => {
