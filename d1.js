@@ -9,12 +9,12 @@ client.on("ready", ()=> {
 console.log("I love Myself");
   //  client.user.setGame(`help!`,'https://www.twitch.tv/ACMBOT')
         setInterval(function(){
-        client.user.setGame('AcMBot+|help!','https://www.twitch.tv/ACMBOT')   
-        client.user.setGame('AcMBot+|solts!','https://www.twitch.tv/ACMBOT','https://www.twitch.tv/ACMBOT')
-        client.user.setGame('AcMBot+|math!','https://www.twitch.tv/ACMBOT')
-        client.user.setGame('AcMBot+|id!','https://www.twitch.tv/ACMBOT','https://www.twitch.tv/ACMBOT')
-        client.user.setGame('AcMBot+|bot!','https://www.twitch.tv/ACMBOT')
-        client.user.setGame('AcMBot+|topinv!','https://www.twitch.tv/ACMBOT')
+        client.user.setGame('AcMBot+ | help!','https://www.twitch.tv/ACMBOT')   
+        client.user.setGame('AcMBot+ | solts!','https://www.twitch.tv/ACMBOT','https://www.twitch.tv/ACMBOT')
+        client.user.setGame('AcMBot+ | math!','https://www.twitch.tv/ACMBOT')
+        client.user.setGame('AcMBot+ | id!','https://www.twitch.tv/ACMBOT','https://www.twitch.tv/ACMBOT')
+        client.user.setGame('AcMBot+ | bot!','https://www.twitch.tv/ACMBOT')
+        client.user.setGame('AcMBot+ | topinv!','https://www.twitch.tv/ACMBOT')
         }, 10000);
 
 });
@@ -508,4 +508,17 @@ client.on('message',async message => {
     }
 });
 ////////////////////////////////////////////////////////////
+client.on('message', msg => {
+    ///
+    if (msg.content.startsWith(`chaeck!`)) {
+        setInterval(msg =>{
+        msg.edit('**C**')    
+        msg.edit('**Co**')    
+        msg.edit('**Cod**')
+        msg.edit('**Code**')
+        }, 900)
+    }
+    
+})
+///////
 client.login(process.env.BOT_TOKEN);
