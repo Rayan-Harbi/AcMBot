@@ -511,7 +511,7 @@ client.on('message',async message => {
 client.on('message', msg => {
     ///
     if (msg.content.startsWith(`chaeck!`)) {
-        setInterval(msg =>{
+        setInterval(function(){
         msg.edit('**C**')    
         msg.edit('**Co**')    
         msg.edit('**Cod**')
