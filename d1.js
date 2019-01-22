@@ -7,17 +7,25 @@ moment.locale('ar-TN');
 ////////////////////////[
 client.on("ready", ()=> {
 console.log("I love Myself");
-  //  client.user.setGame(`help!`,'https://www.twitch.tv/ACMBOT')
-        setInterval(function(){
-        client.user.setGame('AcMBot+ | help!','https://www.twitch.tv/ACMBOT')   
-        client.user.setGame('AcMBot+ | solts!','https://www.twitch.tv/ACMBOT','https://www.twitch.tv/ACMBOT')
-        client.user.setGame('AcMBot+ | math!','https://www.twitch.tv/ACMBOT')
-        client.user.setGame('AcMBot+ | id!','https://www.twitch.tv/ACMBOT','https://www.twitch.tv/ACMBOT')
-        client.user.setGame('AcMBot+ | bot!','https://www.twitch.tv/ACMBOT')
-        //client.user.setGame('AcMBot+ | topinv!','https://www.twitch.tv/ACMBOT')
-        }, 10000);
+    
+client.on('ready', function(){//npm i ms 
+    var ms = 60000 ;
+    var setGame = [`AcMBot+ | help!`,'AcMBot+ | solts!','AcMBot+ | id!','AcMBot+ | bot!',`AcMBot+ | topinv!`];
+    var i = -1;
+    var j = 0;
+    setInterval(function (){
+        if( i == -1 ){
+            j = 1;
+        }
+        if( i == (setGame.length)-1 ){
+            j = -1;
+        }
+        i = i+j;
+        client.user.setGame(setGame[i],`http://www.twitch.tv/ACMBOT`);
+    }, ms);
 
 });
+
 var botName = "AcMBot+";
 var urlbot = "https://cdn.discordapp.com/avatars/330853341477470208/2d20efdea65bfd627a0cc20f02ed512e.jpg?size=128";
 ////////////////////////[
@@ -510,3 +518,4 @@ client.on('message',async message => {
 ////////////////////////////////////////////////////////////
 ///////
 client.login(process.env.BOT_TOKEN);
+ئ
