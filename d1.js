@@ -14,7 +14,7 @@ console.log("I love Myself");
         client.user.setGame('AcMBot+ | math!','https://www.twitch.tv/ACMBOT')
         client.user.setGame('AcMBot+ | id!','https://www.twitch.tv/ACMBOT','https://www.twitch.tv/ACMBOT')
         client.user.setGame('AcMBot+ | bot!','https://www.twitch.tv/ACMBOT')
-        client.user.setGame('AcMBot+ | topinv!','https://www.twitch.tv/ACMBOT')
+        //client.user.setGame('AcMBot+ | topinv!','https://www.twitch.tv/ACMBOT')
         }, 10000);
 
 });
