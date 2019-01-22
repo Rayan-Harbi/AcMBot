@@ -21,11 +21,10 @@ client.on('ready', function(){//npm i ms
             j = -1;
         }
         i = i+j;
-        client.user.setGame(setGame[i],`http://www.twitch.tv/ACMBOT`);
+        client.user.setGame(setGame[i],`http://www.twitch.tv/v5bz`);
     }, ms);
 
 });
-
 var botName = "AcMBot+";
 var urlbot = "https://cdn.discordapp.com/avatars/330853341477470208/2d20efdea65bfd627a0cc20f02ed512e.jpg?size=128";
 ////////////////////////[
@@ -518,3 +517,4 @@ client.on('message',async message => {
 ////////////////////////////////////////////////////////////
 ///////
 client.login(process.env.BOT_TOKEN);
+ئ
