@@ -7,22 +7,15 @@ moment.locale('ar-TN');
 ////////////////////////[
 client.on("ready", ()=> {
 console.log("I love Myself");
-    
-client.on('ready', function(){//npm i ms 
-    var ms = 60000 ;
-    var setGame = [`AcMBot+ | help!`,'AcMBot+ | solts!','AcMBot+ | id!','AcMBot+ | bot!',`AcMBot+ | topinv!`];
-    var i = -1;
-    var j = 0;
-    setInterval(function (){
-        if( i == -1 ){
-            j = 1;
-        }
-        if( i == (setGame.length)-1 ){
-            j = -1;
-        }
-        i = i+j;
-        client.user.setGame(setGame[i],`http://www.twitch.tv/v5bz`);
-    }, ms);
+  //  client.user.setGame(`help!`,'https://www.twitch.tv/ACMBOT')
+        setInterval(function(){
+        client.user.setGame('AcMBot+ | help!','https://www.twitch.tv/ACMBOT')   
+        client.user.setGame('AcMBot+ | solts!','https://www.twitch.tv/ACMBOT')
+        //client.user.setGame('AcMBot+ | math!','https://www.twitch.tv/ACMBOT')
+        client.user.setGame('AcMBot+ | id!','https://www.twitch.tv/ACMBOT')
+        client.user.setGame('AcMBot+ | bot!','https://www.twitch.tv/ACMBOT')
+        client.user.setGame('AcMBot+ | topinv!','https://www.twitch.tv/ACMBOT')
+        }, 10000);
 
 });
 var botName = "AcMBot+";
