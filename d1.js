@@ -508,17 +508,5 @@ client.on('message',async message => {
     }
 });
 ////////////////////////////////////////////////////////////
-client.on('message', msg => {
-    ///
-    if (msg.content.startsWith(`chaeck!`)) {
-        setInterval(function(){
-        msg.edit('**C**')    
-        msg.edit('**Co**')    
-        msg.edit('**Cod**')
-        msg.edit('**Code**')
-        }, 900)
-    }
-    
-})
 ///////
 client.login(process.env.BOT_TOKEN);
