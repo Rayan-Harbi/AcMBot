@@ -7,17 +7,15 @@ moment.locale('ar-TN');
 ////////////////////////[
 client.on("ready", ()=> {
 console.log("I love Myself");
-    client.user.setGame(`help!`,'https://www.twitch.tv/ACMBOT')
-    /**
+  //  client.user.setGame(`help!`,'https://www.twitch.tv/ACMBOT')
         setInterval(function(){
-        client.user.setGame('AcMBot+','help!')   
-        client.user.setGame('AcMBot+','solts!')
-        client.user.setGame('AcMBot+','math!')
-        client.user.setGame('AcMBot+','id!')
-        client.user.setGame('AcMBot+','bot!')
-        client.user.setGame('AcMBot+','topinv!')
-        }, 1600);
-    **/
+        client.user.setGame('AcMBot+|help!','https://www.twitch.tv/ACMBOT')   
+        client.user.setGame('AcMBot+|solts!','https://www.twitch.tv/ACMBOT','https://www.twitch.tv/ACMBOT')
+        client.user.setGame('AcMBot+|math!','https://www.twitch.tv/ACMBOT')
+        client.user.setGame('AcMBot+|id!','https://www.twitch.tv/ACMBOT','https://www.twitch.tv/ACMBOT')
+        client.user.setGame('AcMBot+|bot!','https://www.twitch.tv/ACMBOT')
+        client.user.setGame('AcMBot+|topinv!','https://www.twitch.tv/ACMBOT')
+        }, 10000);
 
 });
 var botName = "AcMBot+";
