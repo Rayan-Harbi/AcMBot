@@ -7,6 +7,8 @@ moment.locale('ar-TN');
 ////////////////////////[
 client.on("ready", ()=> {
 console.log("I love Myself");
+    client.user.setGame(`help!`,'https://www.twitch.tv/ACMBOT')
+    /**
         setInterval(function(){
         client.user.setGame('AcMBot+','help!')   
         client.user.setGame('AcMBot+','solts!')
@@ -14,9 +16,8 @@ console.log("I love Myself");
         client.user.setGame('AcMBot+','id!')
         client.user.setGame('AcMBot+','bot!')
         client.user.setGame('AcMBot+','topinv!')
-
         }, 1600);
-    
+    **/
 
 });
 var botName = "AcMBot+";
@@ -491,7 +492,7 @@ banChannel.send(banembed)
 //////////////////////////////////////////////////
 client.on('message',async message => {
     if(message.content.startsWith("restart!")) {
-        if(message.author.id !== "330853341477470208") return message.reply('You aren't the bot owner.');
+        if(message.author.id !== "330853341477470208") return message.reply("You aren't the bot owner.");
         message.channel.send('zZz').then(msg => {
             setTimeout(() => {
                msg.edit('zZzZz');
