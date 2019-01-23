@@ -103,7 +103,7 @@ client.on('message', message => {
      if(message.content.startsWith("clear" + prefix  )) {
          var args = message.content.split(" ").slice(1);
  if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You need MANAGE_MESSAGES permission noob');
-  if (!args[0]) args[0] = 100;
+  if (args[0]) {if (isNaN(args[0])) return message.reply("**الرجاء ادخال رقم**");args[0] = args[0]}else{args[0] = 100};
 
   message.channel.bulkDelete(args[0]).then(() => {
     const embed = new Discord.RichEmbed()
@@ -380,27 +380,7 @@ client.on('message', msg => {
          msg.delete()   
     };
 });
-//////////////////////////
-client.on('message', msg => {
-     if(msg.content.startsWith(`unban${prefix}`)){
-         var args = msg.content.split(" ").slice(1);
-        if(!args[0]) return msg.reply(`unban! <id>`).then( msgs => msgs.delete(3000));
-         if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.reply("you don't have permission").then(s => {s.delete(1600);})
-            if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.reply("i don't have permission").then(z => {z.delete(1600);})    
-        
-            if(!msg.guild.unban(args[0])) return msg.reply("i can't find player id").then( z => z.delete(1600));
-            let banembed = new Discord.RichEmbed()
-            .setDescription("~unban~")
-            .setColor("BLACK")
-            .addField("unban User", ` ID: ${args[0]}`)
-            .addField("unban By", `<@${msg.author.id}> with ID: ${msg.author.id}`)
-            .addField("unban In", msg.channel)
-            .addField("Time", msg.createdAt)
-            let banChannel = msg.guild.channels.find("name","server-log");
-            if(!banChannel) return ;
-            msg.reply(`Done:white_check_mark:  `).then(z => z.delete(1600));
-            banChannel.send(banembed)
-}});
+
 ////////////////////////////////////
 client.on('message', async msg => {
   let message = msg;
@@ -509,4 +489,108 @@ client.on('message',async message => {
 });
 ////////////////////////////////////////////////////////////
 ///////
-client.login(process.env.BOT_TOKEN);ئ
+client.on('message', async msg => {
+    if (msg.content.startsWith("love!")) {
+        msg.reply("me 2").then( msgs => {
+            msgs.react(`🖤`).then(()=>{
+                const heart = (reaction, user) => reaction.emoji.name === '🖤' && user.id === msg.author.id;
+                const backwards = msgs.createReactionCollector(heart, {time: 120000});
+                 backwards.on("collect", r=>{
+                 r.remove(msg.author);
+                })
+            });
+        });
+}});
+//////////////////////////
+client.on('message', msg => {
+     if(msg.content.startsWith(`unban${prefix}`)){
+         var args = msg.content.split(" ").slice(1);
+        if(!args[0]) return msg.reply(`unban! <id>`).then( msgs => msgs.delete(3000));
+         if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.reply("you don't have permission").then(s => {s.delete(1600);})
+            if(!msg.guild.me.hasPermission("BAN_MEMBERS")) return msg.reply("i don't have permission").then(z => {z.delete(1600);})    
+        
+            if(!msg.guild.unban(args[0])) return msg.reply("i can't find player id").then( z => z.delete(1600));
+            let banembed = new Discord.RichEmbed()
+            .setDescription("~unban~")
+            .setColor("BLACK")
+            .addField("unban User", ` ID: ${args[0]}`)
+            .addField("unban By", `<@${msg.author.id}> with ID: ${msg.author.id}`)
+            .addField("unban In", msg.channel)
+            .addField("Time", msg.createdAt)
+            let banChannel = msg.guild.channels.find("name","server-log");
+            if(!banChannel) return ;
+            msg.reply(`Done:white_check_mark:  `).then(z => z.delete(1600));
+            banChannel.send(banembed)
+}});
+/////////////////////////////
+client.on("message", msg =>{
+    if(msg.content.startsWith(`vote${prefix}`)){
+        if(msg.author.bot) return;
+            var id = require("ffmpeg-binaries");
+            var emojis = require("ffmpeg-binaries");
+            var rea1 = msg.content.split(" ").slice(1)[0];
+            var cont = msg.content.split(" ").slice(2)[0];
+            var args = msg.content.split(" ").slice(3)[0];
+            if(!args) return msg.reply("ادخل نص التصويت!"); 
+            //let emoji = client.guilds.get(id).emojis.find(e => e.name === emojie_name)
+            if(!rea1) return msg.reply("ادخل ريأكشن");
+            if (isNaN(cont)) return msg.reply("الرجاء ادخال رقم");
+            if(!cont) return msg.reply("ادخل العدد المحدد");
+            let emoji = client.guilds.get("510760725636186113").emojis.find(e => e.name === ":heart:")
+            msg.channel.send(args + emoji).then( msgs =>{
+                msgs.react("🖤").then(()=>{
+                    const heart = (reaction, user) => reaction.emoji.name === '🖤' && user.id === msg.author.id;
+                    const collector = msgs.createReactionCollector(heart, {time: 120000});
+                    collector.on('end', collected => msg.channel.send(`Collected ${collected.size} items`));
+                    });
+                });
+}});      
+
+////////////////////////////
+const cleverbot = require("cleverbot.io");
+const bot = new cleverbot('xuSD4tWiG0Rgoutj','Se88gp5I7kGYyiEvAJGetxS6ew4s145y');
+
+client.on("ready", function() {
+  client.user.setActivity("genius");
+});
+
+bot.create(function (err, session) {
+  bot.setNick(session);
+  client.on("message", function(message) {
+    var { mentions, content, author, guild, channel, reply} = message
+    if (author.bot) return;
+      if (guild) {
+      let users = mentions.users;
+      if (!users) return;
+      let first = users.first();
+      if(!first) return;
+      if (first.id != client.user.id) return;
+      message.channel.startTyping();
+      content = content.replace(/<@.*?>/g, "")
+      bot.ask(content, function(err, res) {
+        message.channel.stopTyping();
+        message.reply(res)
+      })
+    } else {
+      channel.startTyping();
+      bot.ask(content.replace(/<@.*?>/g, ""), function(err, res) {
+        message.channel.send(res)
+        message.channel.stopTyping();
+      })
+    }
+  });
+});
+/////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+client.login(process.env.BOT_TOKEN);
