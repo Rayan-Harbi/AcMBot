@@ -5,6 +5,10 @@
   "version": "1.0.0",
 
   "description": "Discord.js bot on Heroku",
+  
+  "replace": "1.0.1",
+  
+  "str_replace": "0.1.6",
 
   "main": "bot.js",
 
